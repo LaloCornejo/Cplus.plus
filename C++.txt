@@ -1,0 +1,1222 @@
+
+#include <iostream>
+
+using namespace std;
+
+int main() {
+    
+    int edad = 19;
+    int edad2 = 30;
+    int familiar = 44;
+    
+    cout << "Hello world!" << endl;
+    cout << "Soy Lalo Cornejo" << endl;
+    cout << "Yo tengo " << edad << " anios" << endl;
+    cout << "Dentro de 30 anios yo tendre " << edad + edad2 << endl;
+    cout << "La edad de mi padre es " << familiar << " (creo)"<< endl;
+    cout << "Y en 30 anios tendra " << familiar + edad2 << endl;
+    cout << "Mi pelicula favorita es Atletico San Pancho o Interstellar" << endl;
+
+    return 0;
+}
+
+--------------------------------------------------------------------------------------
+					PARTE 2
+--------------------------------------------------------------------------------------
+
+#include <iostream>
+
+using namespace std;
+
+int main() {
+    
+    float miPesoKg = 70;
+    float miEstaturaMt = 1.75;
+    float IMC;
+    int edad = 21;
+
+    cout << "Mi peso actual es de: " << miPesoKg << endl;
+    cout << "Mi estatura actual es de: " << miEstaturaMt << endl;
+    IMC = miPesoKg/(miEstaturaMt*miEstaturaMt);
+    cout << "Mi indice de masa corporal es: " << IMC << endl;
+    miPesoKg = 68.4;
+    miEstaturaMt = 1.72;
+    IMC = miPesoKg/(miEstaturaMt*miEstaturaMt);
+    cout << "El indice de masa corporal de Zendel es de: " << IMC << endl;
+
+
+    cout << "Mi familiar dentro de 30 años tendra " << edad + 30 << endl; 
+
+    return 0;
+}
+
+--------------------------------------------------------------------------------------
+					PARTE 3
+--------------------------------------------------------------------------------------
+
+
+#include <iostream>
+
+using namespace std; 
+
+int main() {
+    
+    int valor = 1;
+    bool Aprovada;
+    Aprovada = false;
+    Aprovada = true;
+
+    char letra;
+    letra = '1';
+
+    cout<< "Variable letra " << letra << endl;
+    cout<< "Variable valor "<< valor << endl;
+    
+    string Mi_nombre;
+    Mi_nombre = "Lalo Cornejo";
+    cout << Mi_nombre << endl;
+    
+    return 0;
+}
+
+--------------------------------------------------------------------------------------
+					PARTE 4
+--------------------------------------------------------------------------------------
+
+#include <iostream>
+    
+using namespace std;
+
+int main() {
+
+    string miNombre;
+    int edad;
+    
+    cout << "Por favor ingrese su nombre: " << endl;
+        cin >> miNombre;
+        cout << endl;
+    cout << "Por favor ingrese su edad: " << endl;
+        cin >> edad;
+        cout << endl;
+        
+    cout << "Mi nombre es " << miNombre << endl;
+    cout << "Mi edad es "<< edad << endl;
+
+    return 0;
+}
+
+#include <iostream>
+
+using namespace std;
+
+int main() {
+    
+    float miPesoKg;
+    float miEstaturaMt;
+    float IMC;
+    int edad;
+
+    cout << "________________________" << endl;
+    cout << "     IMC Calculator     " << endl;
+    cout << "________________________" << endl;
+    cout << endl;
+
+    cout << "Ingrese supeso en kg: " << endl;
+    cin >> miPesoKg;
+    cout << endl;
+    
+    cout << "Ingrese su estatura en m:" << endl;
+    cin >> miEstaturaMt;
+    cout << endl;
+    
+    cout << "Mi peso actual es de: " << miPesoKg << endl;
+    cout << "Mi estatura actual es de: " << miEstaturaMt << endl;
+    IMC = miPesoKg/(miEstaturaMt*miEstaturaMt);
+    cout << endl;
+    
+    cout << "******************************************" << endl;
+    cout << "Mi indice de masa corporal es: " << IMC << endl;
+    cout << "******************************************" << endl;
+    IMC = miPesoKg/(miEstaturaMt*miEstaturaMt);
+    return 0;
+    
+}
+
+--------------------------------------------------------------------------------------
+					PARTE 5
+--------------------------------------------------------------------------------------
+
+
+#include <iostream>
+
+using namespace std;
+int main() {
+    string name;
+    int grado;
+    int edad;
+    char grupo;
+    int semestres = 9;
+    
+    cout << "______________________________" << endl;
+    cout << "           Inscripcion        " << endl;
+    cout << "______________________________" << endl;
+    cout << "Inserte nombre: " ;
+    getline( cin, name );
+
+    cout << "Inserte grado: " ;
+    cin >> grado;
+
+    cout << "Inserte edad: " ;
+    cin >> edad;
+
+    cout << "Inserte grupo: " ;
+    cin >> grupo;
+
+    cout << "______________________________" << endl;
+    cout << "|            Datos           |" << endl;
+    cout << "______________________________" << endl;
+
+    cout << "Nombre: " << name << endl; 
+    cout << "Edad: " << edad << endl;
+    cout << "Grado: " << grado << endl;
+    cout << "Grupo: " << grupo << endl;
+    cout << "Le faltan " << semestres - grado << " semestres por cursar" << endl;
+    return 0;
+}
+
+
+--------------------------------------------------------------------------------------
+					PARTE 6
+--------------------------------------------------------------------------------------
+
+
+#include <iostream>
+
+using namespace std;
+
+int main() {
+    
+    int edad;
+
+    cout << "Igrese su edad: ";
+    cin >> edad ;
+    
+    if(edad >= 18){
+        cout << "Es mayor de edad." << endl;
+    }else{
+        cout << "No es mayor de edad." << endl;
+    }
+    return 0;
+}
+
+
+6.2
+
+
+#include <iostream>
+
+using namespace std;
+
+int main() {
+    
+    float cali_p;
+    float cali_s;
+    float cali_t;
+    float cali_f;
+    
+    cout << "______________________________________"<< endl;
+    cout << "      Ingrese sus calificaciones      "<< endl;
+    cout << "______________________________________"<< endl;
+    
+    cout << "1er Parcial: ";
+    cin >> cali_p;
+    // Valor 30
+    cout << "2do Parcial: ";
+    cin >> cali_s;
+    // Valor 30
+    cout << "3er Parcial: ";
+    cin >> cali_t;
+    // Valor 40
+    cali_f = (( cali_p * .3 )+( cali_s * .3 )+( cali_t * .4 ));
+    
+    cout << "Su calificaion final es: "<< cali_f << endl;
+    cout << endl;
+    
+    if( cali_f >= 7){
+    cout << "______________________________________"<< endl;
+    cout << "    Su calificacion es aprovatoria    "<< endl;
+    cout << "______________________________________"<< endl;
+    }else{
+        cout << "Usted reprovo  :c"<< endl;
+    }
+    
+}
+
+--------------------------------------------------------------------------------------
+					PARTE 7
+--------------------------------------------------------------------------------------
+#include <iostream>
+
+using namespace std;
+
+int main() {
+
+    int num;
+    
+    cout << "__________________________" << endl;
+    cout << "   Clasificador numeros   " << endl;
+    cout << "__________________________" << endl;
+    cout << endl;
+
+    cout << "Ingrese el dato: ";
+    cin >> num;
+    cout << "Ok!!!" << endl;
+    cout << endl;
+    
+    if(num > 0){
+        cout << "_________________________" << endl;
+        cout << "  El numero es positivo  " << endl;
+        cout << "_________________________" << endl;
+    }
+    if(num == 0){
+        cout << "_____________________" << endl;
+        cout << "  El numero es zero  " << endl;
+        cout << "_____________________" << endl;
+    }
+    if(num < 0){
+        cout << "_________________________" << endl;
+        cout << "  El numero es positivo  " << endl;
+        cout << "_________________________" << endl;
+    }
+    return 0;
+}
+
+7.2 
+
+#include <iostream>
+
+using namespace std;
+
+int main() {
+
+    int num;
+    
+    cout << "__________________________" << endl;
+    cout << "   Clasificador numeros   " << endl;
+    cout << "__________________________" << endl;
+    cout << endl;
+
+    cout << "Ingrese el dato: ";
+    cin >> num;
+    cout << "Ok!!!" << endl;
+    cout << endl;
+    
+    if(num >= 0){
+        cout << "_________________________" << endl;
+        cout << "  El numero es positivo  " << endl;
+        cout << "_________________________" << endl;
+    }else{
+        cout << "_________________________" << endl;
+        cout << "  El numero es negativo  " << endl;
+        cout << "_________________________" << endl;
+    }
+    return 0;
+}
+
+--------------------------------------------------------------------------------------
+					PARTE 7
+--------------------------------------------------------------------------------------
+
+#include <iostream>
+
+using namespace std;
+
+int main() {
+    
+    int HorasTrabaj;
+    int CuotaHora = 80;
+    int faltas;
+    int retrasos;
+    float salario;
+    
+    cout << "___________________________________________________" << endl;
+    cout << "                       SALARIO                     " << endl;
+    cout << "___________________________________________________" << endl;
+    cout << endl;
+    
+    cout << "Ingrase el numero de horas trabajadas: ";
+    cin >> HorasTrabaj;
+    cout << "___________________________________________________" << endl;
+    
+    cout << "Ingrese el numero de faltas: " ;
+    cin >> faltas;
+    cout << "___________________________________________________" << endl;
+    
+    cout << "Ingresar retardos: ";
+    cin >> retrasos;
+    cout << "___________________________________________________" << endl;
+    
+    if(retrasos >= 5){
+        faltas = faltas + 1;
+        retrasos = 0;
+    }
+
+    HorasTrabaj = HorasTrabaj - faltas;
+    salario = CuotaHora * HorasTrabaj;
+    
+
+    if(faltas >= 3 ){
+        salario = salario  - (salario * .1);
+    }
+    if(HorasTrabaj >= 40) {
+        salario = salario + 500;
+    }
+
+    cout << "Su salario es: " << salario << endl;
+    
+    return 0;
+}
+
+--------------------------------------------------------------------------------------
+				PARTE 8
+--------------------------------------------------------------------------------------
+
+#include <iostream>
+
+using namespace std;
+
+int main() {
+     /*int numero1;
+     int numero2;
+     
+     cout << "Introducir el primer numero entero: ";
+     cin >> numero1;
+     cout << endl;
+     cout << "Introducir segundo numero entero: ";
+     cin >> numero2;
+     
+     if(numero1 >= 0 && numero2 >= 0){
+         cout << "Ambos nuermos son positivos" << endl;
+     }else if(numero1 < 0 && numero2 >= 0){
+         cout << "El numero 1 es negativo" << endl;
+     }else if(numero1 >= 0 && numero2 < 0){
+         cout << "El numero 2 es negativo" << endl;
+     }else if(numero1 < 0 && numero2 < 0){
+         cout << "Ambos numeros son negativos" << endl;
+     }*/
+     
+     int comportamiento;
+     int carta;
+     
+     cout << "Te portaste bien este anio? ((1) si, (0) no) ";
+     cin >> comportamiento;
+     cout << endl;
+     cout << "Le hiciste tu carta a santa a tiempo? ((1) si, (0) no) ";
+     cin >> carta;
+     cout << "________________________________________________________" << endl;
+
+     if(comportamiento == 1 && carta == 1){
+         cout << "Santa te traera regalos!!!!!" << endl;
+     }else if(comportamiento == 0 && carta == 1){
+         cout << "No mereces regalos, tu comportamiento fue malo" << endl;
+     }else if(comportamiento == 1 && carta == 0){
+         cout << "Como te van a traer regalos si no hay carta?????" << endl;
+     }else if(comportamiento == 0 && carta == 0){
+         cout << "Te toca carbon!!! >:|" << endl;
+     }
+     
+    return 0;
+}
+
+--------------------------------------------------------------------------------------
+				PARTE 10
+--------------------------------------------------------------------------------------
+
+// Online C++ compiler to run C++ program online
+#include <iostream>
+
+using namespace std;
+int main() {
+
+    string nombrePP;
+    bool peliculaPP;
+    bool ejercicioPP;
+    string nombreSP;
+    bool peliculaSP;
+    bool ejercicioSP;
+    
+    int opcion;
+    
+    cout << "________________________________________________" << endl;
+    cout << "Introdusca el nombre de la persona 1: ";
+    cin >> nombrePP;
+    cout << "________________________________________________" << endl;
+    
+    cout << "Legusta ir al cine? ";
+    cin >> opcion;
+    
+    if(opcion == 1){
+        peliculaPP = true;
+    }else if(opcion == 0 ){
+        peliculaPP = false;
+    }
+    
+    cout << "Le gusta hacer ejercicio? ";
+    cin >> opcion;
+    
+    if(opcion == 1){
+        ejercicioPP = true;
+    }else if(opcion == 0){
+        ejercicioPP = false;
+    }
+    
+    cout << "________________________________________________" << endl;
+    
+    cout << "Introdusca el nombre de la persona 2: " ;
+    cin >> nombreSP;
+    cout << "________________________________________________" << endl;
+    
+    cout << "Legusta ir al cine? ";
+    cin >> opcion;
+    
+    if(opcion == 1){
+        peliculaSP = true;
+    }else if(opcion == 0 ){
+        peliculaSP = false;
+    }
+    
+    cout << "Le gusta hacer ejercicio? ";
+    cin >> opcion;
+    
+    if(opcion == 1){
+        ejercicioSP = true;
+    }else if(opcion == 0){
+        ejercicioSP = false;
+    }
+    
+    cout << "________________________________________________" << endl;
+    cout << endl;
+    
+    if((peliculaPP && peliculaSP == true) && (ejercicioPP && ejercicioSP == true)){
+        cout << nombrePP << " y "  << nombreSP << " son 90% compatibles" << endl;
+    }else if(peliculaPP != peliculaSP && ejercicioPP != ejercicioSP){
+        cout << nombrePP << " y " << nombreSP << " son 0% compatibles" << endl;
+    }else if(peliculaPP != peliculaSP || ejercicioPP != ejercicioSP){
+        cout << nombrePP << " y " << nombreSP << " son 40% compatibles" << endl;
+    }
+    cout << "________________________________________________" << endl;
+
+    return 0;
+}
+
+
+
+
+--------------------------------------------------------------------------------------
+				        PARTE 11
+--------------------------------------------------------------------------------------
+
+
+// Online C++ compiler to run C++ program online
+#include <iostream>
+
+using namespace std;
+
+int main() {
+    
+    for(int i = 0; i < 5; i++){
+            for(int s = 0; s < 4 - i; s++){
+                cout <<" ";
+        }
+        for(int j = 0; j <= i; j++){
+            cout << "*";
+        }
+        cout << endl;
+    }
+    
+    /*
+    for(int i = 0; i < 5; i++){
+        for(int j = 0; j <= i; j++){
+            cout << "*";
+        }
+        cout << endl;
+    }
+    cout << endl << endl;
+    for(int i = 0; i < 5; i++){
+        for(int j = 4; j >= i; j--){
+            cout << "*";
+        }
+        cout << endl;
+    }
+    */
+    
+    return 0;
+}
+
+--------------------------------------------------------------------------------------
+				        PARTE 12
+--------------------------------------------------------------------------------------
+
+
+// Online C++ compiler to run C++ program online
+#include <iostream>
+
+using namespace std;
+
+int main() {
+    
+    for(int i = 0; i < 5; i++) {
+        cout << i + 1 << " ";
+            for(int s = 0; s < 4 - i; s++) {
+                cout <<" ";
+        }
+        for(int j = 0; j <= i; j++) {
+            cout << "*";
+        }
+        cout << endl;
+    }
+    
+    cout << endl;
+    
+    for(int i = 0; i < 5; i++) {
+        cout << i + 6 << " ";
+        for(int s = 0; s < i; s++){
+            cout << " ";
+        }
+        
+        for(int j = 4; j >= i; j--){
+            cout << "*";
+        }
+        cout << endl;
+    }
+    
+    /*
+    for(int i = 0; i < 5; i++){
+        for(int j = 0; j <= i; j++){
+            cout << "*";
+        }
+        cout << endl;
+    }
+    cout << endl << endl;
+    for(int i = 0; i < 5; i++){
+        for(int j = 4; j >= i; j--){
+            cout << "*";
+        }
+        cout << endl;
+    }
+    */
+    return 0;
+}
+
+--------------------------------------------------------------------------------------
+				        PARTE 13
+--------------------------------------------------------------------------------------
+
+#include <iostream>
+
+using namespace std;
+
+int main() {
+
+    int calificaciones[10];
+    int suma = 0;
+    float promedio = 0.00;
+    int c_apro = 0;
+    calificaciones[0] = 10;
+    calificaciones[1] = 9;
+    calificaciones[2] = 6;
+    calificaciones[3] = 8;
+    calificaciones[4] = 8;
+    calificaciones[5] = 6;
+    calificaciones[6] = 4;
+    calificaciones[7] = 8;
+    calificaciones[8] = 7;
+    calificaciones[9] = 8;
+
+    cout << "Calculadoor de promerdio !" << endl;
+    for(int i = 0; i < 10; i++){
+        cout << calificaciones[i] << endl;
+        if(calificaciones[i] >= 7 && calificaciones[i] <= 10){
+            suma = suma + calificaciones[i];
+            c_apro++;
+        }
+    }
+    promedio = suma / c_apro;
+    cout << "El promedio es: " << promedio << endl;
+    return 0;
+}
+
+--------------------------------------------------------------------------------------
+				        PARTE 14
+--------------------------------------------------------------------------------------
+
+#include <iostream>
+
+using namespace std;
+
+int main() {
+
+    int calificaciones[10];
+    int suma = 0;
+    float promedio = 0.00;
+    int c_apro = 0;
+    int c_nop = 0;
+    calificaciones[0] = 10;
+    calificaciones[1] = 9;
+    calificaciones[2] = 6;
+    calificaciones[3] = 8;
+    calificaciones[4] = 8;
+    calificaciones[5] = 6;
+    calificaciones[6] = 4;
+    calificaciones[7] = 8;
+    calificaciones[8] = 7;
+    calificaciones[9] = 8;
+
+    cout << "__________________________________________________" << endl;
+    cout << "Calculadoor de promerdio !" << endl;
+    cout << "--------------------------------------------------" << endl;
+    cout << endl;
+
+    for(int i = 0; i < 10; i++){
+        cout << calificaciones[i] << endl;
+        if(calificaciones[i] >= 7 && calificaciones[i] <= 10){
+            suma = suma + calificaciones[i];
+            c_apro++;
+        }
+        else if (calificaciones[i] <= 6){
+            c_nop++;
+        }
+    }
+    
+    promedio = suma / c_apro;
+    cout << endl;
+    cout << "__________________________________________________" << endl;
+    cout << "El numero de calificaciones aprovatorias es: " << c_apro << endl;
+    cout << "El numero de calificaciones no aprovatorias es: " << c_nop << endl;
+    cout << endl;
+    cout << "El promedio de las calificaiones aprovadas es: " << promedio << endl;
+    cout << "--------------------------------------------------" << endl;
+    return 0;
+}
+
+--------------------------------------------------------------------------------------
+				        PARTE 16
+--------------------------------------------------------------------------------------
+
+#include <iostream>
+
+using namespace std;
+
+int main() {
+
+int x = 1;
+int y = 1;
+
+    cout << "________________" << endl;
+    cout << " Ciclo DoWhile: " << endl;
+    cout << "________________" << endl;
+    cout << endl;
+
+    do {
+        
+        do {
+            cout << x << " * " << y << " = " << x * y << endl;
+            y++;
+        } while(y <= 10);
+        
+        y = 1;
+        cout << endl;
+        x++;
+    } while( x <= 10);
+    
+    cout << endl;
+    
+    cout << "________________" << endl;
+    cout << "    Ciclo for: " << endl;
+    cout << "________________" << endl;
+    cout << endl;
+
+    for(int i = 1; i <= 10; i++){
+        for(int j = 1; j <= 10; j++){
+            cout << i << " * " << j << " = " << i * j << endl;
+        }
+        cout << endl;
+    }
+
+    return 0;
+}
+
+
+--------------------------------------------------------------------------------------
+				        PARTE 17
+--------------------------------------------------------------------------------------
+
+#include <iostream>
+
+using namespace std;
+
+int main() {
+    int i, j, niv = 0, col = 0, spa = 0, nni;
+    
+    cout << "ingresa numero de columnas (impar): ";
+    cin >> nni;
+    
+    int spai = nni/2;
+    
+    cout << endl;
+    do{
+        cout << ".";
+        col = 0;
+                spa = 0;
+            do{
+                cout << " ";
+                spa++;
+            }while(spa <= spai );
+            spai--;
+        do{
+            cout << "*";
+            col++;
+        }while(col <= niv );
+        cout << endl;
+        niv+=2;
+    }while(niv < nni);
+
+    do{
+        cout << ".";
+        spa = 0;
+        do{
+            cout << " ";
+            spa++;
+        }while(spa < nni/2);
+        j = 0;
+        do{
+            cout << "*";
+            j++;
+        }while(j < 2);
+        cout << endl;
+        i ++;
+    }while(i <= 1);
+
+}
+
+--------------------------------------------------------------------------------------
+				        PARTE 18
+--------------------------------------------------------------------------------------
+
+#include <iostream>
+
+using namespace std;
+
+int main() {
+    int num = 0;
+    string ans;
+    
+    string Alumnos[5];
+    
+    //ingresar nombre de alumnos
+    for(int i = 0; i < 5; i++ ){
+        cout << "Nombre Alumno No."<< i + 1 << ": ";
+        cin >> Alumnos[i];
+    }
+    
+    cout << "----------------------------------" << endl;
+    
+    for(int j = 0 ; j < 5 ;j++ ){
+        cout << j + 1 << ". " << Alumnos[j] << endl;
+    }
+    
+    cout << "----------------------------------" << endl;
+    cout << "Deseas cambiar algun nombre ? y/n " << endl;
+    cin >> ans;
+    
+    if(ans == "y"){
+        cout << "Que numero de alumno deseas cambiar: ";
+        cin >> num ;
+        num = num - 1;
+        cout << "----------------------------------" << endl;
+        cout<< num + 1 << ". " << Alumnos[num] << endl;
+        cout << "Corrige el nombre: " << endl;
+        cin >> Alumnos[num];
+        
+        cout << "----------------------------------" << endl;
+    
+        for(int j = 0 ; j < 5 ;j++ ){
+        cout << j + 1 << ". " << Alumnos[j] << endl;
+        }
+    }else{
+        cout << "           OK";
+    }
+    
+    return 0;
+} 
+
+--------------------------------------------------------------------------------------
+				        PARTE 18
+--------------------------------------------------------------------------------------
+
+#include <iostream>
+
+using namespace std;
+
+int main() {
+    float promedios[3];
+    float arrayCalificaciones[3][5];
+
+    arrayCalificaciones[0][0] = 8;
+    arrayCalificaciones[0][1] = 9;
+    arrayCalificaciones[1][0] = 10;
+    arrayCalificaciones[1][1] = 9;
+    arrayCalificaciones[2][0] = 10;
+    arrayCalificaciones[2][1] = 9;
+    
+    for(int i =0; i < 3; i++ ){
+        cout << "Calificacionesd del alumno numero: " << i +1 << '\n';
+        for(int j = 0; j < 2; j++ ){
+            cout << "Materia " << j +1 << "; " << arrayCalificaciones[i][j] << '\n';
+        }
+        cout << "---------------------------------------------------------" << '\n';
+        promedios[i] = (arrayCalificaciones[i][0] + arrayCalificaciones[i][1]) / 2;
+        cout << "Promedio: " << promedios[i] << '\n';
+        cout << "_________________________________________________________" << '\n';
+        cout << '\n';
+    }
+    
+    return 0;
+}
+
+--------------------------------------------------------------------------------------
+				        PARTE 19
+--------------------------------------------------------------------------------------
+
+#include <iostream>
+
+using namespace std;
+
+int main() {
+    float promedios[3];
+    float arrayCalificaciones[3][5];
+    int excelencia = 0;
+
+    arrayCalificaciones[0][0] = 8;
+    arrayCalificaciones[0][1] = 9;
+    arrayCalificaciones[1][0] = 10;
+    arrayCalificaciones[1][1] = 9;
+    arrayCalificaciones[2][0] = 10;
+    arrayCalificaciones[2][1] = 9;
+    
+    for(int i =0; i < 3; i++ ){
+        excelencia = 0;
+        cout << "Calificaciones del alumno numero: " << i +1 << '\n';
+        for(int j = 0; j < 2; j++ ){
+            cout << "Materia " << j +1 << ": " << arrayCalificaciones[i][j] << '\n';
+            if(arrayCalificaciones[i][j] == 10){
+                excelencia++;
+            }
+        }
+        cout << "---------------------------------------------------------" << '\n';
+        promedios[i] = (arrayCalificaciones[i][0] + arrayCalificaciones[i][1]) / 2;
+        cout << "Promedio: " << promedios[i] << '\n';
+        cout << "EL alumno numero " << i +1 << " tiene " << excelencia << " materias con calificacion de excelecia" << endl;
+        cout << "_________________________________________________________" << '\n';
+        cout << '\n';
+    }
+    
+    return 0;
+}
+
+--------------------------------------------------------------------------------------
+				        PARTE 19
+--------------------------------------------------------------------------------------
+
+#include <iostream>
+
+int main() {
+
+int asisCali[4][2];
+std::string names[4];
+    names[0] = "Pao";
+    names[1] = "Alfredo";
+    names[2] = "Lalo";
+    names[3] = "Luis";
+    
+    asisCali[0][0] = 10;
+    asisCali[0][1] = 8;
+    asisCali[1][0] = 10;
+    asisCali[1][1] = 10;
+    asisCali[2][0] = 8;
+    asisCali[2][1] = 8;
+    asisCali[3][0] = 10;
+    asisCali[3][1] = 7;
+
+    for(int i = 0;i < 4; i++ ){
+        std::cout << "_____________________________________" << "\n";
+        std::cout << "\t" << names[i] << " tuvo " << asisCali[i][0] << " asistencias\n";
+        
+        if(asisCali[i][0] == 10 && asisCali[i][1] < 10){
+            asisCali[i][1] += 1;
+            std::cout << "* \t +1 punto OuO \n";
+        }else if(asisCali[i][0] == 10 && asisCali[i][1] == 10 ){
+            std::cout << "* \t Ya tiene 10 O_O... \n";
+        }else if(asisCali[i][0] < 10){
+            std::cout << "* \t No hay punto Q-Q \n";
+        }
+        
+            std::cout << "\t Y su calificaion es " << asisCali[i][1] << "\n";
+            std::cout << "_____________________________________\n";
+    }
+
+    return 0;
+}
+
+--------------------------------------------------------------------------------------
+				        PARTE 20
+--------------------------------------------------------------------------------------
+
+#include <iostream>
+
+int main() {
+    int x;
+    std::cin >> x;
+    int num[x][x];
+    int D1, D2;
+    
+    for(int i = 0; i < x;i++){
+        for(int j = 0; j < x; j++){
+            std::cin >> num[j][i]; 
+        }
+    }
+    for(int m = 0; m < x; m++){
+        for(int n = 0; n < x; n++){
+            std::cout << num[n][m] << "\t";
+        }
+        std::cout << std::endl;
+    }
+    
+    for(int p = 0; p < x; p++){
+        D1 = D1 + num[p][p];
+        std::cout << D1 << "\n";
+    }
+    
+        std::cout << "Diagonal2I \n";
+        
+    for(int s = 0; s < x; s++){
+            D2 = D2 + num[s][x - (s + 1)];
+            std::cout << D2 << "\n";
+    }
+    std::cout << "D 1 = " << D1 << "\n";
+    std::cout << "D 2 = " << D2 << "\n\n";
+    
+    std::cout << "Resultado = " << D1 + D2 << "\n";
+    
+    return 0;
+}
+------------------------------------------------------------------------------------------------
+// Online C++ compiler to run C++ program online
+#include <iostream>
+
+int main() {
+    int num[3][3];
+    int Dia1, Dia2;
+    
+    std::cin>>num[0][0]>>num[0][1]>>num[0][2];
+    std::cin>>num[1][0]>>num[1][1]>>num[1][2];
+    std::cin>>num[2][0]>>num[2][1]>>num[2][2];
+    
+    std::cout << "\t\t" << "__________\n";
+    std::cout << "\t\t " << num[0][0] << "\t" << num[0][1] << "\t" << num[0][2] << "\n";
+    std::cout << "\t\t " << num[1][0] << "\t" << num[1][1] << "\t" << num[1][2] << "\n";
+    std::cout << "\t\t " << num[2][0] << "\t" << num[2][1] << "\t" << num[2][2] << "\n";
+    std::cout << "\t\t" << "__________\n\n";
+
+    Dia1 = num[0][0] + num[1][1] + num[2][2];
+    Dia2 = num[0][2] + num[1][1] + num[2][0];
+    
+    std::cout << "\t" << "Diagonal 1: " << Dia1 << "\n";
+    std::cout << "\t" << "Diagonal 2: " << Dia2 << "\n";
+    
+    std::cout << "\t" << "---------------------\n";
+    std::cout << "\t" << "El resultado es = " << Dia2 + Dia1 << "\n";
+    std::cout << "\t" << "---------------------\n";
+    return 0;
+}
+
+1 2 3 
+4 5 6 
+7 8 9 
+
+--------------------------------------------------------------------------------------
+				        PARTE 21
+--------------------------------------------------------------------------------------
+
+#include <iostream>
+
+int main() {
+    int x;
+    std::cin >> x;
+   
+    int num[x][x];
+    int D1, D2;
+    int sum[2][x];
+    
+    for(int i = 0; i < x;i++){
+        for(int j = 0; j < x; j++){
+            std::cin >> num[j][i]; 
+        }
+    }
+    
+            std::cout << "\n\n";
+
+    for(int m = 0; m < x; m++){
+        for(int n = 0; n < x; n++){
+            std::cout << num[n][m] << " |\t";
+        }
+        std::cout << "\n";
+    }
+       
+       
+        std::cout << "\n\n";
+    
+    
+    for(int p = 0; p < x; p++){
+        D1 += num[p][p];
+        sum[0][p] = D1;
+    }
+
+    for(int s = 0; s < x; s++){
+            D2 += num[s][x - (s + 1)];
+            sum[1][s] = D2;
+    }
+    
+    for(int i = 0; i < x; i++){
+        std::cout << i + 1 << "° suma: ";
+        std::cout << sum[0][i] << " + " << sum[1][i] << "\n";
+        std::cout << "________________\n";
+        if(sum[0][i] > sum[1][i]){
+            std::cout << "\tD1 > D2\n";
+        }else if(sum[0][i] < sum[1][i]){
+            std::cout << "\tD1 < D2\n";
+        }else if(sum[0][i] == sum[1][i]){
+            std::cout << "\tD1 == D2\n";
+        }
+    }
+    
+    std::cout << "\n\n\t\t\t\t\tD1 = " << D1 << "\n";
+    std::cout << "\t\t\t\t\tD2 = " << D2 << "\n\n";
+    
+    if(D1 > D2){
+        std::cout << "\t********************************************\n";
+        std::cout << "\t  La diagonal 1 es mayor que la diagonal 2\n";
+        std::cout << "\t********************************************\n";
+    }else if (D2 > D1 ) {
+        std::cout << "\t********************************************\n";
+        std::cout << "\t  La diagonal 2 es mayor que la diagonal 1\n";
+        std::cout << "\t********************************************\n";
+    }else if (D2 == D1){
+        std::cout << "\t********************************************\n";
+        std::cout << "\t  Los valores de las diagonales son iguales\n";
+        std::cout << "\t********************************************\n";
+    }
+    
+    std::cout << "\n\t\t\t\tResultado = " << D1 + D2 << "\n";
+    
+    return 0;
+}
+
+
+--------------------------------------------------------------------------------------
+				        PARTE 22
+--------------------------------------------------------------------------------------
+
+#include <iostream>
+
+using namespace std;
+
+int main() {
+    int min;
+    int x = 100;
+    int num[x];
+    
+    for(int i = 0; i < x; i++){
+        num[i] = rand()%10000;
+    }
+    cout << "\n";
+    cout << "inicial\n";
+    for(int i = 0; i < x; i++){
+    cout << i << ": " << num[i] << "\n";
+        }
+
+    for(int h = 0; h < x; h++){
+        for(int v = 0 + h; v < x; v++){
+            if(num[h] > num[v]){
+                min = num[v];
+                num[v] = num[h];
+                num[h] = min;
+            }
+        }
+    }
+            cout << "*********\n";
+            for(int i = 0; i < x; i++){
+            cout << i << ": " << num[i] << "\n";
+            }
+
+    return 0;
+}
+
+
+--------------------------------------------------------------------------------------
+				        PARTE 22
+--------------------------------------------------------------------------------------
+
+#include <iostream>
+    
+int main() {
+    
+int num[10];
+/*    num[0] = 3;
+    num[1] = 7;
+    num[2] = 8;
+    num[3] = 2;
+    num[4] = 9;
+    num[5] = 11;
+    num[6] = 5;
+    num[7] = 1;
+    num[8] = 19;
+    num[9] = 27;*/
+    
+    for(int i = 0; i < 10; i++){
+        num[i] = rand()%100;
+    }
+    
+    std::cout << "\n *************** \n";
+    std::cout << "    0 --> 9 \n";
+    std::cout << " *************** \n";
+
+    for(int i = 0; i < 10; i++ ){
+        std::cout << "\t\t" << num[i] << "\n";
+    }
+    
+    std::cout << "\n *************** \n";
+    std::cout << "     9 --> 0 \n";
+    std::cout << " *************** \n";
+    
+    for(int i = 9; i >= 0; i--){
+        std::cout << "\t\t" <<num[i] << "\n";
+    }
+    
+    std::cout << "\n *************** \n";
+    std::cout << " Pares  Impares\n";
+    std::cout << " *************** \n";
+    
+    for(int p = 0; p < 10; p++){
+        if(num[p] % 2 == 0){
+            std::cout << "El num: " << num[p] << " es par entonces se vera cambiado por: ";
+            num[p] = 2000;
+        }else{
+            std::cout << "El num: " << num[p] << " es impar entonces se vera cambiado por: ";
+            num[p] = 4000;
+        }
+        std::cout << num[p] << "\n";
+    }
+    
+    return 0;
+}
