@@ -183,7 +183,28 @@ void edad_mayor(struct Alumno x, struct Alumno y, struct Alumno w){
 
 void promedio_mayor_cu(struct Alumno x, struct Alumno y, struct Alumno w){
     int promx, promy, promw;
+    
     if( x.promedio_p1 > x.promedio_p2 && x.promedio_p2 > x.promedio_p3){
-        
+        promx = x.promedio_p1;
+    }else if( x.promedio_p1 < x.promedio_p2 && x.promedio_p2 > x.promedio_p3){
+        promx = x.promedio_p2;
+    }else if( x.promedio_p1 < x.promedio_p2 && x.promedio_p2 < x.promedio_p3){
+        promx = x.promedio_p3;;
+    }
+    
+    if( y.promedio_p1 > y.promedio_p2 && y.promedio_p2 > y.promedio_p3){
+        promy = y.promedio_p1;
+    }else if( y.promedio_p1 < y.promedio_p2 && y.promedio_p2 > y.promedio_p3){
+        promy = x.promedio_p2;
+    }else if( y.promedio_p1 < y.promedio_p2 && y.promedio_p2 < y.promedio_p3){
+        promy = y.promedio_p3;;
+    }
+    
+    if( w.promedio_p1 > w.promedio_p2 && w.promedio_p2 > w.promedio_p3){
+        promw = w.promedio_p1;
+    }else if( w.promedio_p1 < w.promedio_p2 && w.promedio_p2 > w.promedio_p3){
+        promw = w.promedio_p2;
+    }else if( w.promedio_p1 < w.promedio_p2 && w.promedio_p2 < w.promedio_p3){
+        promw = w.promedio_p3;;
     }
 }
