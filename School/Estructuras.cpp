@@ -13,7 +13,7 @@ void configuracion(void);
 void prom_mayor(struct Alumno x, struct Alumno y, struct Alumno w);
 void nom_largo(struct Alumno x, struct Alumno y, struct Alumno w);
 void edad_mayor(struct Alumno x, struct Alumno y, struct Alumno w);
-void promedio_mayor_cu(struct Alumno x, struct Alumno y, struct Alumno w){
+void promedio_mayor_cu(struct Alumno x, struct Alumno y, struct Alumno w);
 
 struct Alumno{
     int ncuenta;
@@ -30,7 +30,7 @@ struct Alumno{
 
 struct Alumno w;
 struct Alumno x = {101010, "Pepito Perez Lopez", "13/12/23", 1, 1, 15, 9.5, 7.3, 9.2, 10};
-struct Alumno y = {201020, "Maria Juanita Hernandez", "24/12/23",1, 1, 21, 8.3, 7.5, 8.7, 9.2};
+struct Alumno y = {201020, "Maria Juanita Hernandez", "24/12/23",1, 1, 12, 8.3, 7.5, 8.7, 9.2};
 
 using namespace std;
 
@@ -39,7 +39,7 @@ int main () {
     configuracion();
     cout << "\n\n";
 
-    cout << "\t\t\t **      Estructuras     **\n";
+    cout << "\t\t    **      Estructuras     **\n";
     cout << "\tVisualisacion de lo que contiene la variable tipo struct: \n";
     ver_info_x(x);
 
@@ -57,7 +57,7 @@ int main () {
 
     configuracion();
 
-    cout << "Promedios... \n\n";
+    cout << "***        Promedios       *** \n\n";
     prom_mayor(x, y, w);
     nom_largo(x, y, w);
     edad_mayor(x, y, w);
@@ -99,16 +99,16 @@ void pedir_dato_w(void){
     cout << "Solicitando datos... \n\n";
     cout << "Nombre: "; cin >> w.nombre;
     cout << "Fecha de ingreso: "; cin >> w.fecha_ing;
-    cout << "Numero de cuenta: "; cin >> w.ncuenta; cout << "\n";
-    cout << "Semestre: "; cin >> w.sem; cout << "\n";
-    cout << "Grupo: "; cin >> w.grupo; cout << "\n";
-    cout << "Promesdio: "; cin >> w.promedio; cout << "\n\n";
+    cout << "Numero de cuenta: "; cin >> w.ncuenta;
+    cout << "Semestre: "; cin >> w.sem;
+    cout << "Grupo: "; cin >> w.grupo;
+    cout << "Promedio: "; cin >> w.promedio; cout << "\n\n";
 
     cout << "***********************************************************************\n";
     cout << "\t **       Mostrando los datos que acaban de ser ingresados...      **\n";
     cout << "***********************************************************************\n";
     cout << "No. cuenta: " << w.ncuenta << "\n\n";
-    cout << "Nombre: " << puts(w.nombre) << "\n\n";
+    cout << "Nombre: " << puts(w.nombre) << "\n\n"; w.edad = 0;
     cout << "Fecha de ingreso: " << w.fecha_ing << "\n\n";
     cout << "Semestre: " << w.sem << "\n\n";
     cout << "Grupo: " << w.grupo << "\n\n";
@@ -139,10 +139,10 @@ void prom_mayor(struct Alumno x, struct Alumno y, struct Alumno w){
     }else if(x.promedio < y.promedio && w.promedio < y.promedio){
     puts(y.nombre);
     M = y.promedio;
-    }else if(x.promedio > y.promedio && w.promedio < y.promedio){
+    }else if(x.promedio > y.promedio && w.promedio < x.promedio){
     puts(x.nombre);
     M = x.promedio;
-    }else if(x.promedio < y.promedio && w.promedio > y.promedio){
+    }else if(x.promedio < w.promedio && w.promedio > y.promedio){
     puts(w.nombre);
     M = w.promedio;
     }
@@ -152,59 +152,64 @@ void prom_mayor(struct Alumno x, struct Alumno y, struct Alumno w){
 void nom_largo(struct Alumno x, struct Alumno y, struct Alumno w){
     if(strlen(x.nombre) == strlen(y.nombre) && strlen(y.nombre) == strlen(w.nombre)){
         cout << "Los nombres tienen la misma longitud... \n";
-    }else if(strlen(x.nombre) > strlen(y.nombre) && strlen(y.nombre) < strlen(w.nombre)){
+    }else if(strlen(x.nombre) > strlen(y.nombre) && strlen(x.nombre) > strlen(w.nombre)){
         puts(x.nombre);
-        cout << "El nombre mas largo tiene: " << strlen(x.nombre) << " caracteres\n";
+        cout << "El nombre mas largo tiene: " << strlen(x.nombre) << " caracteres\n\n";
     }else if(strlen(x.nombre) < strlen(y.nombre) && strlen(y.nombre) > strlen(w.nombre)){
         puts(y.nombre);
-        cout << "El nombre mas largo tiene: " << strlen(y.nombre) << " caracteres\n";
-    }else if(strlen(x.nombre) < strlen(y.nombre) && strlen(y.nombre) < strlen(w.nombre)){
+        cout << "El nombre mas largo tiene: " << strlen(y.nombre) << " caracteres\n\n";
+    }else if(strlen(x.nombre) < strlen(w.nombre) && strlen(y.nombre) < strlen(w.nombre)){
         puts(w.nombre);
         cout << "El nombre mas largo tiene: " << strlen(w.nombre) << " caracteres\n\n";
     }
 }
 void edad_mayor(struct Alumno x, struct Alumno y, struct Alumno w){
     int edadm;
-    if(strlen(x.nombre) == strlen(y.nombre) && strlen(y.nombre) == strlen(w.nombre)){
-        cout << "Los nombres tienen la misma longitud... \n";
-    }else if( x.edad > y.edad && y.edad < w.edad){
+
+    if( x.edad == y.edad && y.edad == w.edad){
+        cout << "Todos tiene la misma edad... \n";
+    }else if( x.edad > y.edad && x.edad > w.edad){
         puts(x.nombre);
         edadm = x.edad;
     }else if( x.edad < y.edad && y.edad > w.edad){
         puts(y.nombre);
         edadm = y.edad;
-    }else if( x.edad < y.edad && y.edad < w.edad){
+    }else if( x.edad < w.edad && y.edad < w.edad){
         puts(w.nombre);
         edadm = w.edad;
     }
 
-    cout << " La edad mayor es: " << edadm << "\n\n";
+    cout << "La edad mayor es: " << edadm << "\n\n";
 }
 
 void promedio_mayor_cu(struct Alumno x, struct Alumno y, struct Alumno w){
     int promx, promy, promw;
     
-    if( x.promedio_p1 > x.promedio_p2 && x.promedio_p2 > x.promedio_p3){
+    if( x.promedio_p1 > x.promedio_p2 && x.promedio_p1 > x.promedio_p3){
         promx = x.promedio_p1;
     }else if( x.promedio_p1 < x.promedio_p2 && x.promedio_p2 > x.promedio_p3){
         promx = x.promedio_p2;
-    }else if( x.promedio_p1 < x.promedio_p2 && x.promedio_p2 < x.promedio_p3){
+    }else if( x.promedio_p1 < x.promedio_p3 && x.promedio_p2 < x.promedio_p3){
         promx = x.promedio_p3;;
     }
     
-    if( y.promedio_p1 > y.promedio_p2 && y.promedio_p2 > y.promedio_p3){
+    if( y.promedio_p1 > y.promedio_p2 && y.promedio_p1 > y.promedio_p3){
         promy = y.promedio_p1;
     }else if( y.promedio_p1 < y.promedio_p2 && y.promedio_p2 > y.promedio_p3){
         promy = x.promedio_p2;
-    }else if( y.promedio_p1 < y.promedio_p2 && y.promedio_p2 < y.promedio_p3){
+    }else if( y.promedio_p1 < y.promedio_p3 && y.promedio_p2 < y.promedio_p3){
         promy = y.promedio_p3;;
     }
     
-    if( w.promedio_p1 > w.promedio_p2 && w.promedio_p2 > w.promedio_p3){
+    if( w.promedio_p1 > w.promedio_p2 && w.promedio_p1 > w.promedio_p3){
         promw = w.promedio_p1;
     }else if( w.promedio_p1 < w.promedio_p2 && w.promedio_p2 > w.promedio_p3){
         promw = w.promedio_p2;
-    }else if( w.promedio_p1 < w.promedio_p2 && w.promedio_p2 < w.promedio_p3){
+    }else if( w.promedio_p1 < w.promedio_p3 && w.promedio_p2 < w.promedio_p3){
         promw = w.promedio_p3;;
     }
+
+    cout << "El proemedio de " << x.nombre << "es: " << promx << "\n";
+    cout << "El proemedio de " << y.nombre << "es: " << promy << "\n";
+    cout << "El proemedio de " << w.nombre << "es: " << promw << "\n";
 }
