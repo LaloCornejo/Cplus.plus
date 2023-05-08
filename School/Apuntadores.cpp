@@ -103,7 +103,7 @@ void cubo(double *num){
     double c;
     c = pow(*num, 3);
 
-    std::cout << "\t\t El valor del cubo al numero ingresadoes: " << c << "\n";
+    std::cout << "\t\t El valor del cubo al numero ingresado es: " << c << "\n";
 
     std::cin.get();
 }
