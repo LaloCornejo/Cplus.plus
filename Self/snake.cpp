@@ -49,21 +49,21 @@ void Map() {
                 cout << "o";
             else if(i ==fy && j ==fx)
                 cout << "x";
-                else{
-                    bool print = false;
-                    for( int k = 0; k < nt;k++){
-                        if(tx[k] == j && ty[k] == i){
-                            cout << "o";
-                            print = true;
-                        }
+            else{
+                bool print = false;
+                for( int k = 0; k < nt;k++){
+                    if(tx[k] == j && ty[k] == i){
+                        cout << "o";
+                        print = true;
                     }
-
-                    if(!print)
-                        cout << " ";
                 }
 
-                if(j == width - 1)
-                    cout << "#";
+                if(!print)
+                    cout << " ";
+            }
+
+            if(j == width - 1)
+                cout << "#";
         }
 
         cout << "\n";
