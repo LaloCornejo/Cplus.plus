@@ -224,7 +224,7 @@ void StartSimul(){
                 a = (0- k) / pow((x_inicial - h), 2);
             std::cout << "\n\t\t\t\t\t\t\t    V(" << h << ", " << k << ")" << "\n\t\t\t\t\t        F(x) = "  << a << "( " << "x - " << h << " )^2 + " <<  k  ;
         }
-        std::cout << "\n\t\t\t\t\t\t         x1 = "  << x_inicial << " x2 = "  << x_final << "\n" << h1 << " " << h2;
+        std::cout << "\n\t\t\t\t\t\t         x1 = "  << x_inicial << " x2 = "  << x_final << "\n";
         refresh++;
         std::cout << "FPS: " << FPS << " Seconds: " << clock()/1000;
     }
