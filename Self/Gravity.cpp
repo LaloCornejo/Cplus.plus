@@ -4,15 +4,27 @@
 #include<random>
 #include<conio.h>
 #include<Windows.h>
+#include<ctime>
 
 
-void welcome();
+//void menu();
+void Init();
+void StartSimul();
+void Map();
+void funcionesLineales();
+void funcinesCuadraticas();
+void Input();
+void Gravity();
+void Friction();
+void Logic();
+void fps();
 
 
 const int width = 100;
 const int height = 14;
 const int soil_lvl = height-1;
-int FPS = 0;
+int FPS = 0, refresh = 0;
+;
 
 int gravity = 0, acelerationV = 0, acelerationH = 0;
 
@@ -23,6 +35,8 @@ char movements[20];
 int m, xf;
 
 //Cuadratica
+int prevy;
+float h;
 
 enum Direction {STOP = 0, LEFT, RIGHT, UP};
 Direction dir;
@@ -45,6 +59,10 @@ void Map(){
                 std::cout << "\t " << height - i << " |";
             if(i == y && j == x)
                 std::cout << "O";
+            if(i == height - acelerationVI && cuadratica == true && j == h)
+                std::cout << "*";
+            if(i == height && j == x_inicial && j != x)
+                std::cout << "#";
             if(i == height)
                 std::cout << "~";
             else{
@@ -75,23 +93,30 @@ void Input(){
     if(_kbhit()){
         switch(_getch()){
             case 'a': case 'A':
-            if(acelerationH > -4)
+            if(acelerationH == 0)
+                x_inicial=x;
+            if(acelerationH > -4 && height - y == 0)
                 acelerationH -= 2;
             if(height-y==0)
-            funcionesLineales();
+                funcionesLineales();
             break;
             case 'd': case 'D':
-            if(acelerationH < 4)
+            if(acelerationH == 0)
+                x_inicial=x;
+            if(acelerationH < 4 && height - y == 0)
                 acelerationH += 2;
             if(height-y==0)
-            funcionesLineales();
+                funcionesLineales();
             break;
             case 'w': case 'W':
             if(height - y == 0){
                 acelerationV += 2 + rand() % 3;
                 acelerationVI = acelerationV;
                 x_inicial = x;
-                funcionesCuadradas();
+                if(acelerationH > 0){
+                    funcionesCuadradas();
+                }else
+                    funcionesLineales();
             }
             break;
             default:
@@ -120,6 +145,12 @@ void Friction(){
 }
 
 void Logic(){
+    if(cuadratica==true && acelerationV == 0){
+        prevy = (y-1)-height;
+    }
+    if(prevy == - 1 && height-y == 0){
+        acelerationH = 0;
+    }
     if(acelerationH < 0){
         x+=acelerationH; 
     }
@@ -132,6 +163,7 @@ void Logic(){
 
     if(y >= soil_lvl)
         y = soil_lvl;
+        prevy = 0;
     if(x >= width){
         x = width;
         acelerationH = 0;
@@ -147,6 +179,10 @@ void Logic(){
         acelerationH = 0;
 }
 
+void fps(){
+    float seconds = clock()/1000;
+    FPS = refresh / seconds;
+}
 
 void StartSimul(){
     Init();
@@ -157,36 +193,52 @@ void StartSimul(){
         Logic();
         Gravity();
         Friction();
+        fps();
         std::cout << "\t\t\t\t\t\t\t  Y: " << (height-y) << "  X: " << x;
         std::cout << "\n\t\t\t\t\t\tAceleracion H: " << acelerationH << "  Aceleracion V: " << acelerationV;
         if(cuadratica == false){
             std::cout << "\n\t\t\t\t\t\t         F(x) = "  <<  m << "x + " << xf;
             std::cout << "\n\t\t\t\t\t\t\t  d(A, B) = " << sqrt(pow(x_final - (x_inicial), 2)+pow(y - y, 2));
         }
+        float h1, h2, k, x_max, x_min;
+        
         if(cuadratica == true){
-            int y2, x2, h, k, x_max;;
+            int y2, x2;
             float a;
-            if(x_inicial > x_final)
-                x_max = x_inicial; 
-            if(x_inicial < x_final)
+            if(x_inicial > x_final){
+                x_max = x_inicial;
+                x_min = x_final; 
+            }
+            if(x_inicial < x_final){
                 x_max = x_final; 
-                h = x_max - (abs(x_inicial - x_final) / 2);
+                x_min = x_inicial; 
+            }
+                h1 = x_max - ((x_max - x_min) / 2);
+                h2 = ((x_max - x_min) / 2) + x_min;
+                if(h1 == h2){
+                    h = h1;
+                }else{
+                    h = (abs(abs(h2)-abs(h1))/2);
+                }
                 k = acelerationVI;
-                a = (x_inicial-k)/ pow(h, 2);
-            std::cout << "\n\t\t\t\t\t\t\t     V(" << h << ", " << k << ")" << "\n\t\t\t\t\t        F(x) = -"  << a << "( " << "x - " << h << " )^2 + " <<  k  ;
+                a = (0- k) / pow((x_inicial - h), 2);
+            std::cout << "\n\t\t\t\t\t\t\t    V(" << h << ", " << k << ")" << "\n\t\t\t\t\t        F(x) = "  << a << "( " << "x - " << h << " )^2 + " <<  k  ;
         }
-        std::cout << "\n\t\t\t\t\t\t         x1 = "  << x_inicial << " x2 = "  << x_final << "\n";
-    FPS++;
-    std::cout << "FPS: " << FPS;
+        std::cout << "\n\t\t\t\t\t\t         x1 = "  << x_inicial << " x2 = "  << x_final << "\n" << h1 << " " << h2;
+        refresh++;
+        std::cout << "FPS: " << FPS << " Seconds: " << clock()/1000;
     }
+    Sleep(200);
 }
 
-void menu(){
-    std::cout << "**** Elige el modo de simula ****\n";
-    std::cout << "********* 1. Open world *********\n";
-    std::cout << "*********** 2. Battle ***********\n";
-    std::cout << "---------------------------------\n";
-    std::cout << "\tOpcion: "; std::cin >> op;
+/*void menu(){
+    system("cls");
+    std::cout << "\n\n\n\n\n\n\n\n\n";
+    std::cout << "\t\t\t\t\t\t**** Elige el modo de simula ****\n";
+    std::cout << "\t\t\t\t\t\t*******   1. Open world   *******\n";
+    std::cout << "\t\t\t\t\t\t---------------------------------\n";
+    std::cout << "\t\t\t\t\t\t\tOpcion: "; std::cin >> op;
+    std::cout << "\n\n\t\t\t\t\tSalir de la simulacion presiona la tecla 'z' .-.";
 
     switch(op){
         case 1:
@@ -194,7 +246,7 @@ void menu(){
             break;
         
     }
-}
+}*/
 
 int main(){
     std::cin.tie(NULL);   
