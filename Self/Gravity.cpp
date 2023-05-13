@@ -276,7 +276,6 @@ void StartSimul(){
         refresh++;
         
     }
-    Sleep(200);
 }
 
 /*void menu(){
