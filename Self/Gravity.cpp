@@ -12,11 +12,16 @@ void Init();
 void StartSimul();
 void Map();
 void funcionesLineales();
+void funcionesLinealesV();
 void funcinesCuadraticas();
 void Input();
 void Gravity();
 void Friction();
 void Logic();
+void Data();
+void DataLineal();
+void DataLinealY();
+void DataCuadratica();
 void fps();
 
 
