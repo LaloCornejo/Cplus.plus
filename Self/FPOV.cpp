@@ -18,7 +18,7 @@ int nMapWidth = 16;
 float fPlayerX = 14.7f;
 float fPlayerY = 5.09f;
 float fPlayerA = 0.0f;
-float fFOV = 3.141592 / 4.0;
+float fFOV = 3.14159f / 4.0f;
 float fDepth = 16.0f;
 float fSpeed = 5.0f;
 
@@ -54,7 +54,8 @@ int main(){
     
 
 
-    while(1){
+    while(1)
+    {
 
         tp2 = chrono::system_clock::now();
         chrono::duration<float> elapsedTime = tp2 - tp1;
@@ -94,7 +95,7 @@ int main(){
             }
         }
 
-        for(int x=0; x< nScreenWidth; x++)
+        for(int x = 0; x < nScreenWidth; x++)
         {
             //For each column, calculate the proyected ray nagle iinto world space
             float fRayAngle = (fPlayerA - fFOV/2.0f) + ((float)x/ (float)nScreenWidth) * fFOV;
@@ -116,7 +117,7 @@ int main(){
             {
                 fDistanceToWall += fStepSize;
                 int nTestX = (int)(fPlayerX + fEyeX * fDistanceToWall);
-                int nTestY = (int)(fPlayerY + fEyeX * fDistanceToWall);
+                int nTestY = (int)(fPlayerY + fEyeY * fDistanceToWall);
 
                 //Test if ray is out of bounds
                 if(nTestX < 0 || nTestX >= nMapWidth || nTestY < 0 || nTestY >= nMapHeight){
@@ -169,16 +170,21 @@ int main(){
             
             //Shader calls based on distance
             short nShade = ' ';
-            if(fDistanceToWall <= fDepth / 4.0f)
+            if(fDistanceToWall <= fDepth / 4.0f){
                 nShade = 0x2588;                                   // Very close
-            else if(fDistanceToWall < fDepth / 3.0f)    
+            }
+            else if(fDistanceToWall < fDepth / 3.0f){   
                 nShade = 0x2593;
-            else if(fDistanceToWall < fDepth / 2.0f)    
+            }
+            else if(fDistanceToWall < fDepth / 2.0f){
                 nShade = 0x2592;
-            else if(fDistanceToWall < fDepth)           
+            }   
+            else if(fDistanceToWall < fDepth){
                 nShade = 0x2591;
-            else                                        
+            }   
+            else{
                 nShade = ' ';                                       //Verry far
+            }          
             
             if(bBoundary)
             nShade = ' ';
@@ -186,15 +192,15 @@ int main(){
             for(int y=0; y <nScreenHeight;y++)
             {
                 //Each Row
-                if(y < nCelling)
+                if(y <= nCelling)
                     screen[y * nScreenWidth + x] = ' ';
-                else if(y > nCelling && y < nFloor)
+                else if(y > nCelling && y <= nFloor)
                     screen[y * nScreenWidth + x] = nShade;
                 else    //Floor
                 { 
                     //Shade floor vbased on distance
                     float b = 1.0f - (((float)y -nScreenHeight/2.0f) / ((float)nScreenHeight / 2.0f));
-                    if(b< 0.25)
+                    if(b < 0.25)
                         nShade = '#';
                     else if (b < 0.5)
                         nShade = 'x';
@@ -212,12 +218,12 @@ int main(){
 
 
 
-        //Diaply Stats
-        swprintf_s(screen, 40, L"X=%3.2f, Y%3.2f, A=%3,2f FPS=%3.2f )", fPlayerX, fPlayerY, fPlayerA, 1.0f/fElapsedTime);
-
+		// Display Stats
+		swprintf_s(screen, 40, L"X=%3.2f, Y=%3.2f, A=%3.2f FPS=%3.2f ", fPlayerX, fPlayerY, fPlayerA, 1.0f/fElapsedTime);
+        
         //Display Map
-        for(int nx =0; nx < nMapWidth; nx++){
-            for(int ny =0 ; ny < nMapWidth; ny++){
+        for(int nx = 0; nx < nMapWidth; nx++){
+            for(int ny = 0 ; ny < nMapWidth; ny++){
                 screen[(ny+1) * nScreenWidth + nx] = map[ny * nMapWidth + nx];
             }
         }

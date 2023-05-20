@@ -1,0 +1,4 @@
+﻿  ConFPS.cpp
+C:\Users\L A L O\Dropbox\Coding\Cplus.plus\ConFPS\ConFPS\ConFPS.cpp(160,38): warning C4305: 'initializing': truncation from 'double' to 'float'
+C:\Users\L A L O\Dropbox\Coding\Cplus.plus\ConFPS\ConFPS\ConFPS.cpp(169,26): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+  ConFPS.vcxproj -> C:\Users\L A L O\Dropbox\Coding\Cplus.plus\ConFPS\x64\Debug\ConFPS.exe
