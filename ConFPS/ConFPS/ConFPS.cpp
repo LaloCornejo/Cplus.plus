@@ -1,31 +1,33 @@
+/*              L Æ L Ö              
+     lalocornejoofficial@gmail.com     */
 #include<iostream>
 #include<vector>
 #include<utility>
 #include<algorithm>
 #include<chrono>
 #include<math.h>
-
-using namespace std;
-
 #include<stdio.h>
 #include<Windows.h>
 
-int nScreenWidth = 120;
-int nScreenHeight = 40;
-int nMapHeight = 16;
-int nMapWidth = 16;
+using namespace std;
+
+
+const int nScreenWidth = 280;
+const int nScreenHeight = 80;
+const int nMapHeight = 16;
+const int nMapWidth = 16;
 
 float fPlayerX = 14.7f;
 float fPlayerY = 5.09f;
 float fPlayerA = 0.0f;
-float fFOV = 3.14159f / 4.0f;
+const float fFOV = 3.14159f / 4.0f;
 float fDepth = 16.0f;
-float fSpeed = 5.0f;
+const float fSpeed = 3.0f;
 
 int main() {
 
-    //Create Screen Bueffer
-    wchar_t* screen = new wchar_t[nScreenWidth * nScreenHeight];
+    //Create Screen Buffer
+    auto* screen = new wchar_t[nScreenWidth * nScreenHeight];
     HANDLE hConsole = CreateConsoleScreenBuffer(GENERIC_READ | GENERIC_WRITE, 0, NULL, CONSOLE_TEXTMODE_BUFFER, NULL);
     SetConsoleActiveScreenBuffer(hConsole);
     DWORD dwBytesWritten = 0;
@@ -34,17 +36,17 @@ int main() {
     map += L"################";
     map += L"#..............#";
     map += L"#..............#";
+    map += L"#########......#";
     map += L"#..............#";
     map += L"#..............#";
     map += L"#..............#";
-    map += L"#..............#";
-    map += L"#..............#";
-    map += L"#..............#";
-    map += L"#..............#";
-    map += L"#..............#";
-    map += L"#..............#";
-    map += L"#..............#";
-    map += L"#..............#";
+    map += L"#..........#####";
+    map += L"#...........####";
+    map += L"#............###";
+    map += L"##............##";
+    map += L"###............#";
+    map += L"####...........#";
+    map += L"#####..........#";
     map += L"#..............#";
     map += L"################";
 
@@ -63,16 +65,16 @@ int main() {
         float fElapsedTime = elapsedTime.count();
 
 
-        //Handle CCW Rotatio
+        //Handle CCW Rotation
         if (GetAsyncKeyState((unsigned short)'A') & 0x8000)
             fPlayerA -= (fSpeed * 0.75f) * fElapsedTime;
 
-        //Handle CCW Rotatio
+        //Handle CCW Rotation
         if (GetAsyncKeyState((unsigned short)'D') & 0x8000)
             fPlayerA += (fSpeed * 0.75f) * fElapsedTime;
 
         //Handle forwards movement &  collision
-        if (GetAsyncKeyState((unsigned short)'W') && 0x8000)
+        if (GetAsyncKeyState((unsigned short)'W') & 0x8000)
         {
             fPlayerX += sinf(fPlayerA) * fSpeed * fElapsedTime;;
             fPlayerY += cosf(fPlayerA) * fSpeed * fElapsedTime;;
@@ -83,8 +85,8 @@ int main() {
             }
         }
 
-        //Handle backwards movement and colllision
-        if (GetAsyncKeyState((unsigned short)'S') && 0x8000)
+        //Handle backwards movement and collision
+        if (GetAsyncKeyState((unsigned short)'S') & 0x8000)
         {
             fPlayerX -= sinf(fPlayerA) * fSpeed * fElapsedTime;;
             fPlayerY -= cosf(fPlayerA) * fSpeed * fElapsedTime;;
@@ -104,15 +106,15 @@ int main() {
             float fStepSize = 0.1f;         //Increase for ray casting, decrease to inclrease reolustion
             float fDistanceToWall = 0.0f;
 
-            bool bHitWall = false;          //Set twhen ray hit wall
-            bool bBoundary = false;         //Ray beween 2 walls 
+            bool bHitWall = false;          //Set then ray hit wall
+            bool bBoundary = false;         //Ray between 2 walls 
 
             float fEyeX = sinf(fRayAngle);
             float fEyeY = cosf(fRayAngle);
 
 
-            //Incremeantally cast ray from player, alomng ray angle, testing for 
-            //intersection with ablock
+            //Incrementally cast ray from player, along ray angle, testing for 
+            //intersection with a block
             while (!bHitWall && fDistanceToWall < fDepth)
             {
                 fDistanceToWall += fStepSize;
@@ -132,14 +134,14 @@ int main() {
                         ///Ray has hit wall
                         bHitWall = true;
 
-                        //To highlight tile boundarioes, casr a ray from eeach corner
+                        //To highlight tile boundaries, cast a ray from each corner
                         //of the tile, to the player. The more coincident this ray
                         //is to the rendering ray, the closer we are to a tile
                         //boundary=, which well shade to add detail to the walls 
                         vector<pair<float, float>> p;
 
-                        //Test each corner of the hiti tile, storing the distance from
-                        //the plyer, and the calculated dot product of th etwo rays 
+                        //Test each corner of the hit tile, storing the distance from
+                        //the player, and the calculated dot product of the two rays 
                         for (int tx = 0; tx < 2; tx++)
                             for (int ty = 0; ty < 2; ty++) {
                                 //Angle of the corner ti eye
@@ -156,7 +158,7 @@ int main() {
                                 return left.first < right.first;
                             });
 
-                        //First two/three are closes (we will never see al four)
+                        //First two/three are closes (we will never see all four)
                         float fBound = 0.01;
                         if (acos(p.at(0).second) < fBound) bBoundary = true;
                         if (acos(p.at(1).second) < fBound) bBoundary = true;
@@ -165,7 +167,7 @@ int main() {
                 }
             }
 
-            //Calculare distance to celling and floor
+            //Calculate distance to celling and floor
             int nCelling = (float)(nScreenHeight / 2.0) - nScreenHeight / ((float)fDistanceToWall);
             int nFloor = nScreenHeight - nCelling;
 
@@ -184,7 +186,7 @@ int main() {
                 nShade = 0x2591;
             }
             else {
-                nShade = ' ';                                       //Verry far
+                nShade = ' ';                                       //Very far
             }
 
             if (bBoundary)
@@ -223,8 +225,8 @@ int main() {
         swprintf_s(screen, 40, L"X=%3.2f, Y=%3.2f, A=%3.2f FPS=%3.2f ", fPlayerX, fPlayerY, fPlayerA, 1.0f / fElapsedTime);
 
         //Display Map
-        for (int nx = 0; nx < nMapWidth; nx++) {
-            for (int ny = 0; ny < nMapWidth; ny++) {
+        for(int nx = 0; nx < nMapWidth; nx++) {
+            for(int ny = 0; ny < nMapWidth; ny++) {
                 screen[(ny + 1) * nScreenWidth + nx] = map[ny * nMapWidth + nx];
             }
         }
