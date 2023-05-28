@@ -201,7 +201,7 @@ int main() {
                     screen[y * nScreenWidth + x] = nShade;
                 else    //Floor
                 {
-                    //Shade floor vbased on distance
+                    //Shade floor based on distance
                     float b = 1.0f - (((float)y - nScreenHeight / 2.0f) / ((float)nScreenHeight / 2.0f));
                     if (b < 0.25)
                         nShade = '#';
