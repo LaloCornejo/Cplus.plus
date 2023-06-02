@@ -20,3 +20,5 @@ int main() {
 }
 
 //https://omegaup.com/arena/problem/Chocolates-CIIC-2015
+
+//https://omegaup.com/arena/problem/Un-problema-facil-2/#problems
