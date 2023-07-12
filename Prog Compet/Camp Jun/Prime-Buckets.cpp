@@ -16,6 +16,8 @@ bool  isPrime(int num){
 
     return true;
 }
+
+
 int main() {
     ll n;
     cin >> n;
@@ -30,4 +32,5 @@ int main() {
         }
 
     printf("Total Primes: %d \n", prim);
+
 }
