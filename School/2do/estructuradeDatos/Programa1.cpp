@@ -1,40 +1,43 @@
+// Author: L Æ L Ö
+
 #include<iostream>
-#include<cstdio>
 using namespace std;
 
-double operacion(int, int, char);
-
+bool has_duplicates(int[], int);
 
 int main(){
-    int a, b;
-    char sim;
-    double result;
+    int n;
+    cin >> n;
+    int nums[n];
 
-    cin >> a >> b >> sim;
-
-    result = operacion(a, b, sim);
-
-    printf("resultado = %f", result);
-
-}
-
-double operacion(int a, int b, char sim){
-
-    double result;
-    switch(sim){
-        case '+':
-            result =(double) a + b;
-        break;
-        case '-':
-            result =(double) a - b;
-        break;
-        case '*':
-            result =(double) a * b;
-        break;
-        case '/':
-            result =(double) a / b;
-        break;
+    for(int i = 0; i < n; i++){
+        cin >> nums[i];
     }
 
-    return result;
+    int has = has_duplicates( nums, n);
+
+    if(has){
+        cout << "Hay duplicados" << endl;
+    }else{
+        cout << "No hay duplicados" << endl;
+    }
+
+    return 0;
 }
+
+bool has_duplicates(int nums[], int n){
+    bool has = false;
+    for(int i = 0; i < n; i++){
+        for(int j = i+1; j < n; j++){
+            if(nums[i] == nums[j]){
+                has = true;
+                break;
+            }
+        }
+    }
+    return has;
+}
+
+/*
+El programa que revisa es mega bruto :)
+*/
