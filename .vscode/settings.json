@@ -6,7 +6,8 @@
         "iostream": "cpp",
         "istream": "cpp",
         "random": "cpp",
-        "utility": "cpp"
+        "utility": "cpp",
+        "list": "cpp"
     },
     "C_Cpp.errorSquiggles": "disabled"
 }

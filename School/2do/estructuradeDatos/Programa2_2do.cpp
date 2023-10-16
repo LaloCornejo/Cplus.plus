@@ -52,7 +52,7 @@ public:
     }
 
     ~Lista() {
-        delete[] personas; // Liberar la memoria cuando la lista se destruye
+        delete[] personas;
     }
 
     void agregar_persona(Persona persona) {
@@ -115,8 +115,10 @@ public:
 };
 
 void clean(){
-    system("cls");
-    //system("clear");  This is for Mac or Linux
+    // This is for Windows
+    //system("cls");    
+    // This is for Mac or Linux
+    //system("clear");  
 }
 
 int main() {
