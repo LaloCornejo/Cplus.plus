@@ -31,7 +31,10 @@ void lista_enlazada::mostrar(){
             cout << aux->dato << " ";
             aux = aux->enlace;
         }while(aux != NULL);
-    }
+
+        cout << "\n";
+    }else
+        cout << " /Vacia/ \n";
 }
 
 void lista_enlazada::insertarInicio(int ingreso){
