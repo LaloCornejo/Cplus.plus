@@ -5,7 +5,7 @@ class nodo{
     public:
         int dato;
         nodo *enlace;
-}
+};
 
 class lista_enlazada{
     private:
@@ -13,13 +13,14 @@ class lista_enlazada{
     public:
         lista_enlazada();
         void mostrar();
-        void insertarInicio();
-        void insertar();
+        void insertarInicio(int);
+        void insertar(int);
         void eliminarInicio();
         void eliminarFinal();
-}
+        void eliminarLista();
+};
 
-void lista_enlazada::lista_enlazada(){
+lista_enlazada::lista_enlazada(){
     cabecera = NULL;
 }
 
@@ -29,22 +30,22 @@ void lista_enlazada::mostrar(){
         do{
             cout << aux->dato << " ";
             aux = aux->enlace;
-        }while(aux->enlace != NULL);
+        }while(aux != NULL);
     }
 }
 
-void lista_enlazada::insertar_i(){
-    nodo nodo;
+void lista_enlazada::insertarInicio(int ingreso){
+
     nodo *nuevo = new nodo;
-    cin >> nuevo->dato;
+    nuevo->dato = ingreso;
     nuevo->enlace = cabecera;
     cabecera = nuevo;
 }
 
-void lista_enlazada::insertar(){
+void lista_enlazada::insertar(int ingreso){
     nodo *nuevo = new nodo();
 
-    cin >> nuevo->dato;
+    nuevo->dato = ingreso;
     nuevo->enlace= NULL;
 
     if(cabecera == NULL){
@@ -73,14 +74,25 @@ void lista_enlazada::eliminarFinal(){
             cabecera = NULL;
             delete aux;
         }else{
-            nodo * aux2 = cabecera;
-            do{
+            nodo * aux1 = cabecera;
+            nodo * aux2 = cabecera->enlace;
+            while(aux2->enlace != NULL){
                 aux1 = aux2;
                 aux2 = aux2->enlace;
-            }while(aux->enlace != NULL);
-
+            }
             aux1->enlace = NULL;
             delete aux2;
+        }
+    }
+}
+
+void lista_enlazada::eliminarLista(){
+    if(cabecera){
+        nodo *aux = cabecera;
+        while(aux){
+            cabecera = cabecera->enlace;
+            delete aux;
+            aux = cabecera;
         }
     }
 }
