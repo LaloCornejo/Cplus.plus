@@ -3,18 +3,38 @@
 
 using namespace std;
 
-int main(){
-    stack<char> pila;
-    string mensaje;
-
-    getline(cin, mensaje);
-
-    int l = mensaje.length();
-
-    for(int i = 0; i < l; i++){
-        if(mensaje[i] == '(' || mensaje[i] == ')' || mensaje[i] == '[' || mensaje[i] == ']' || mensaje[i] == '{' || mensaje[i] == '}'){
-            pila.push('(');
-        }
-    }
+bool Pares(char abre,char cierra)
+{
+    if(abre == '(' && cierra == ')') return true;
+    else if(abre == '{' && cierra == '}') return true;
+    else if(abre == '[' && cierra == ']') return true;
+    return false;
 }
 
+bool Balance(string expr)
+{
+    stack<char> S;
+    for(int i =0;i<expr.length();i++)
+    {
+        if(expr[i] == '(' || expr[i] == '{' || expr[i] == '[')
+            S.push(expr[i]);
+        else if(expr[i] == ')' || expr[i] == '}' || expr[i] == ']')
+        {
+            if(S.empty() || !Pares(S.top(),expr[i]))
+                return false;
+            else
+                S.pop();
+        }
+    }
+    return S.empty() ? true:false;
+}
+
+int main()
+{
+    string expresion;
+    cin>>expresion;
+    if(Balance(expresion))
+        cout<<"Balanceado\n";
+    else
+        cout<<"No Balanceado\n";
+}
