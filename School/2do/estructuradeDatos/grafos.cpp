@@ -1,4 +1,5 @@
 #include<iostream>
+#include<queue>
 using namespace std;
 
 class nodo{
@@ -39,6 +40,23 @@ void Ino(nodo* r){
     cout << r->data << " ";
 }
 
+void amplitud( nodo* r ){
+    queue<nodo*> q;
+    if ( r == NULL )
+        return;
+    if( r != NULL )
+        q.push( r );
+    while( !q.empty() ){
+        nodo* aux = q.front();
+        cout << aux->data << " ";
+        q.pop();
+        if( aux->left != NULL )
+            q.push( aux->left );
+        if( aux->right != NULL )
+            q.push( aux->right ); 
+    }
+}
+
 int main(){
     nodo* root = new nodo(1);
 
@@ -57,4 +75,6 @@ int main(){
     printf("** Recorrido Inorden **\n");
     Ino( root );
     cout << "\n";
+    printf( "** Recorrido por amplitud **\n" );
+    amplitud( root );
 }
