@@ -8,7 +8,8 @@
         "random": "cpp",
         "utility": "cpp",
         "list": "cpp",
-        "stack": "cpp"
+        "stack": "cpp",
+        "new": "cpp"
     },
     "C_Cpp.errorSquiggles": "disabled"
 }
