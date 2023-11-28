@@ -12,20 +12,21 @@ private:
     int nVertices;
 public:
     grafo(int);
-    *grafo();
+    ~grafo();
 
     void addConte( int, int );
     void print();
     void rAmplitud( int );
-}
+    void rProfundidad( int );
+};
 
 grafo::grafo( int n ){
     nVertices = n;
-    cdy = new list<int> (n);
+    cdy = new list<int> [n];
 }
 
 grafo::~grafo(){
-    delete cdy;
+    delete[] cdy;
 }
 
 void grafo::addConte( int u, int v ){
@@ -35,7 +36,7 @@ void grafo::addConte( int u, int v ){
 
 void grafo::print(){
     list<int>::iterator it;
-    for( int i = 0; i < 5; i++ ){
+    for( int i = 0; i < nVertices; i++ ){
         for( it = cdy[i].begin() ; it != cdy[i].end(); it++){
             cout << *it << " ";
         }
@@ -44,26 +45,88 @@ void grafo::print(){
 }
 
 void grafo::rAmplitud( int v ){
-    bool vis[nVertices.size()] = { false }; // Verices Visitadas
+    bool vis[nVertices]; // Verices Visitadas
+
+    for( int i = 0; i < nVertices; i++ ){
+        vis[i] = false;
+    }
 
     queue<int> q;
 
     q.push(v);
     vis[v] = true;
 
-    while(!c.empty()){
+    while(!q.empty()){
         int aux = q.front();
         q.pop();
         cout << aux << " ";
-        list<int>::iterator = *it;
+        list<int>::iterator it;
 
-        for( it= q[aux].begin(); it != q[aux].end(); it++ ){
-            if( !vis[ *it ] )
+        for( it = cdy[aux].begin(); it != cdy[aux].end(); it++ ){
+            if( vis[ *it ] == false ){
                 vis[ *it ] = true;
-                c.push( *it );
+                q.push( *it );
+            }
         }
     }
 }
+
+
+void grafo::rProfundidad( int v ){
+    bool visit[nVertices];
+
+    for( int i = 0; i < nVertices; i++)
+        visit[i] = false;
+
+    queue<int> q;
+    q.push(v);
+    visit[v] = true;
+
+    while( !q.empty() ){
+        int aux = q.front();
+        cout << aux << " ";
+        q.pop();
+        list<int>::iterator it;
+        for( it = cdy[aux].begin(); it != cdy[aux].end(); it++ ){
+            cout << *it << "\n";
+            if( visit[ *it ] == false ){
+                visit[ *it ] = true;
+                q.push( *it );
+                break;
+            }
+        }
+    }
+}
+
+/*
+    0---1
+    | / | \
+    4---3---2
+
+    [0] = 1 4
+    [1] = 0 2 3 4
+    [2] = 1 3
+    [3] = 1 2 4
+    [4] = 0 1 3
+
+    [3] = 1 0 4 0 1 2
+
+    3 1 0 4 2
+
+    Imprimo origen
+    Marco como visitado
+    Agrego a la queue
+    Mientras la queue no este vacia
+        Tomo el primero de la queue
+        Recorro sus adyacentes
+            Si no estan visitado
+                Lo marco como visitado
+                Lo agrego a la queue
+            En cunanto termine de recorrer los adyacentes
+                Imprimo el primero de la queue
+                Lo saco de la queue
+            l,
+*/
  
 int main(){
     grafo g(5);
@@ -74,4 +137,8 @@ int main(){
     g.addConte( 1, 4 );
     g.addConte( 2, 3 );
     g.addConte( 3, 4 );
+
+    g.rAmplitud(0);
+    cout << "\n";
+    g.rProfundidad(3);
 }
