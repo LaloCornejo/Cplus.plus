@@ -88,7 +88,7 @@ void grafo::rProfundidad( int v ){
         q.pop();
         list<int>::iterator it;
         for( it = cdy[aux].begin(); it != cdy[aux].end(); it++ ){
-            cout << *it << "\n";
+            // cout << *it << "\n";
             if( visit[ *it ] == false ){
                 visit[ *it ] = true;
                 q.push( *it );
