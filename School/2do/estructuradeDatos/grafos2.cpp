@@ -3,6 +3,19 @@
 #include<iostream>
 #include<list>
 #include<queue>
+#include<stack>
+
+/*
+    0---1
+    | / | \
+    4---3---2
+
+    [0] = 1 4
+    [1] = 0 2 3 4
+    [2] = 1 3
+    [3] = 1 2 4
+    [4] = 0 1 3
+*/
 
 using namespace std;
 
@@ -78,40 +91,33 @@ void grafo::rProfundidad( int v ){
     for( int i = 0; i < nVertices; i++)
         visit[i] = false;
 
-    queue<int> q;
-    q.push(v);
-    visit[v] = true;
+    stack<int> s;
+    s.push(v);
 
-    while( !q.empty() ){
-        int aux = q.front();
-        cout << aux << " ";
-        q.pop();
-        list<int>::iterator it;
-        for( it = cdy[aux].begin(); it != cdy[aux].end(); it++ ){
-            // cout << *it << "\n";
-            if( visit[ *it ] == false ){
-                visit[ *it ] = true;
-                q.push( *it );
-                break;
+    while( !s.empty() ){
+        int aux = s.top();
+        s.pop();
+        if( visit[aux] == false ){
+            cout << aux << " ";
+            visit[aux] = true;
+            list<int>::reverse_iterator it; 
+            for( it = cdy[aux].rbegin(); it != cdy[aux].rend(); it++ ){ 
+                // cout << *it << "\n";
+                if( visit[ *it ] == false ){
+                    s.push( *it );
+                }
             }
         }
     }
 }
 
+
 /*
-    0---1
-    | / | \
-    4---3---2
-
-    [0] = 1 4
-    [1] = 0 2 3 4
-    [2] = 1 3
-    [3] = 1 2 4
-    [4] = 0 1 3
-
-    [3] = 1 0 4 0 1 2
-
+    0 1 2 3 4
+    1 0 4 3 2
+    2 1 0 4 3
     3 1 0 4 2
+    4 0 1 2 3
 
     Imprimo origen
     Marco como visitado
@@ -140,5 +146,5 @@ int main(){
 
     g.rAmplitud(0);
     cout << "\n";
-    g.rProfundidad(3);
+    g.rProfundidad(1);
 }
