@@ -146,5 +146,5 @@ int main(){
 
     g.rAmplitud(0);
     cout << "\n";
-    g.rProfundidad(1);
+    g.rProfundidad(3);
 }
