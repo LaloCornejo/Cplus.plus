@@ -9,7 +9,8 @@
         "utility": "cpp",
         "list": "cpp",
         "stack": "cpp",
-        "new": "cpp"
+        "new": "cpp",
+        "*.tcc": "cpp"
     },
     "C_Cpp.errorSquiggles": "disabled"
 }
