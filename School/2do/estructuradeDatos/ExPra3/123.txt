@@ -1,0 +1,4 @@
+pelota  12
+camisa  500
+pizza  230
+Total: 742

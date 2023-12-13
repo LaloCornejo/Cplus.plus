@@ -80,7 +80,7 @@ void cleanTerminal() {
     #ifdef _WIN32
         system("cls");
     #else
-        system("clear");
+        system("clear");1
     #endif
 }
 
