@@ -1,16 +1,17 @@
 {
-    "files.associations": {
-        "*.excalidraw": "json",
-        "*.excalidrawlib": "json",
-        "cmath": "cpp",
-        "iostream": "cpp",
-        "istream": "cpp",
-        "random": "cpp",
-        "utility": "cpp",
-        "list": "cpp",
-        "stack": "cpp",
-        "new": "cpp",
-        "*.tcc": "cpp"
-    },
-    "C_Cpp.errorSquiggles": "disabled"
+  "files.associations": {
+    "*.excalidraw": "json",
+    "*.excalidrawlib": "json",
+    "cmath": "cpp",
+    "iostream": "cpp",
+    "istream": "cpp",
+    "random": "cpp",
+    "utility": "cpp",
+    "list": "cpp",
+    "stack": "cpp",
+    "new": "cpp",
+    "*.tcc": "cpp"
+  },
+  "C_Cpp.errorSquiggles": "disabled",
+  "cSpell.words": ["forn", "Ofast", "popcnt", "rforn", "ssse"]
 }
